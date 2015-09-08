@@ -1,0 +1,6 @@
+
+Template.displayTeacher.helpers({
+		email : function(){
+		
+		}
+});

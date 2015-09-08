@@ -1,0 +1,29 @@
+<template name="home">
+
+	{{>navbar}}
+	<style>
+		.jumbotron
+		{
+			background: url("/wallpaper-1.jpg") no-repeat center center;
+			background-size: cover;
+
+		}
+	</style>
+	<div class="jumbotron" style="height:350px;">
+		<center>
+			<h1>Bienvenue sur P004</h1>
+			<h4>Trouver une séance sport près de chez vous</h4>
+			<br />
+			<center>{{> searchBar}}</center>
+		</center>
+	</div>
+	{{#if currentUser}}
+	<div class="container-fluid">
+		<ul class="list list-unstyled">
+			{{#each lessons}}
+				{{> displayLesson}}
+			{{/each}}
+		</ul>
+	</div>
+	{{/if}}
+</template>

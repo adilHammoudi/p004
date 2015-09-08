@@ -1,0 +1,80 @@
+<template name="formBecomeTeacher">
+	<center><h2>Bienvenue sur le formulaire</h2></center>
+
+	<div class="container">
+		<h4>Et donc, vous voulez devenir professeur ?...Remplissez ce formulaire.</h4>
+
+		{{#unless currentUser}}
+			<form class="form-group register">
+
+			<div class="row">
+				<div class="col-md-3">
+					<label for="email">Email</label>
+					<input type="email" name="email" placeholder="Email" class="form-control">
+				</div>
+				<div class="col-md-3">
+					<label for="password">Mot de passe</label>
+					<input type="password" name="password" placeholder="Mot de passe" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3" style="margin-top : 20px;">
+					<button type="submit" class="btn btn-danger">Enregistrer</button>
+				</div>
+			</div>
+			</form>
+		{{/unless}}
+		
+		{{#if currentUser}}
+			<form class="form-group become-teacher">
+			<div class="row">
+				<div class="col-md-3">
+					<label for="lname">Nom</label>
+					<input type="text" name="lname" placeholder="Nom" class="form-control">
+				</div>
+				<div class="col-md-3">
+					<label for="fname">Prénom</label>
+					<input type="text" name="fname" placeholder="Prénom" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="birthday">Date de naissance</label>
+					<input type="date" name="birthday" class="form-control">
+				</div>
+				<div class="col-md-3">
+					<label for="phone">Numéro de téléphone</label>
+					<input type="phone" name="phone" placeholder="Numéro de téléphone" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="level1">Enseignement primaire</label><br />
+					<input type="checkbox" name="level1" value="french"/>Français<br/>
+					<input type="checkbox" name="level1" value="math"/>Math<br/>
+					<input type="checkbox" name="level1" value="eveil"/>Eveil<br />
+					<input type="checkbox" name="level1" value="dutch"/>Néerlandais<br/>
+				</div>
+				<div class="col-md-4">
+					<label for="level2">Enseignement secondaire du premier degré</label>
+					<input type="checkbox" name="level2" value="french"/>Français<br/>
+					<input type="checkbox" name="level2" value="math"/>Math<br/>
+					<input type="checkbox" name="level2" value="sciences"/>Sciences(général)<br />
+					<input type="checkbox" name="level2" value="dutch"/>Néerlandais<br/>
+					<input type="checkbox" name="level2" value="history"/>Histoire<br/>
+					<input type="checkbox" name="level2" value="latin"/>Latin<br/>
+					<input type="checkbox" name="level2" value="gym"/>Education physique<br/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3" style="margin-top : 20px;">
+					<button type="submit" class="btn btn-danger">Enregistrer</button>
+				</div>
+			</div>
+			</form>
+			{{/if}}
+		
+		<button class="btn btn-success back-home">Back home</button>
+	</div>
+
+</template>

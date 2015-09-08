@@ -1,0 +1,61 @@
+
+Template.formBecomeTeacher.events({
+		"submit .register" : function(event){
+		
+					event.preventDefault();
+					
+					var data ={
+							email : event.target.email.value,
+							password : event.target.password.value};
+
+					
+					Meteor.call('createTeacher',data);
+					Meteor.loginWithPassword({email : data.email},data.password);
+					return false;
+		},
+		
+		"submit .become-teacher" : function(event,template){
+					
+					event.preventDefault();		
+					var nom = event.target.lname.value;
+					var prenom = event.target.fname.value;
+					var birthday = event.target.birthday.value;
+					var phone = event.target.phone.value;
+					var level1 = event.target.level1.value;
+					var selected = template.findAll( "input[name=level1]:checked");
+
+				    var level1 = _.map(selected, function(item) {
+					 return item.defaultValue;
+				   });
+					var level2 = event.target.level2.value;
+					var data ={
+								lname : nom,
+								fname: prenom,
+								birthday : birthday,
+								phone : phone,
+								level1 : level1,
+								level2 : level2 };
+											
+					Meteor.call('addTeacher',data);						
+
+					event.target.lname.value="";
+					event.target.fname.value="";
+					event.target.birthday.value="";
+					event.target.phone.value="";
+					event.target.level1.value="";
+					event.target.level2.value="";
+					
+					Router.go('/');
+					
+					return false;
+		},
+		
+		"click .back-home" : function(event) {
+		
+					event.preventDefault();
+					
+					Router.go('/');
+		}
+});
+
+

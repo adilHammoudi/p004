@@ -1,0 +1,70 @@
+Meteor.methods({
+		'createUser' : function(data){
+					/*check data*/
+					
+					var isCreated;
+					if(Accounts.createUser(data))
+						{isCreated=true;}
+					else
+						{isCreated=false;}
+						
+					return isCreated;
+		},
+		
+		'updateUser' : function(data){
+						/*check data*/		
+						
+						var isUpdated;
+						var userId = Meteor.userId();
+						 
+						if(Meteor.users.update(userId,{$set : data}))
+							{isUpdated = true;}
+						else
+							{isUpdated = false;}
+						
+						return isUpdated;
+		},
+		
+		'updateUserForAdmin' : function(userId,data){
+						/*check data*/		
+						
+						var isUpdated;
+						 
+						if(Meteor.users.update(userId,{$set : data}))
+							{isUpdated = true;}
+						else
+							{isUpdated = false;}
+						
+						return isUpdated;
+		},
+		
+		'removeUser' : function(){
+						
+						var isRemoved; 
+						var userId = Meteor.userId();
+						if(Meteor.users.remove(userId))
+							{isRemoved = true;}
+						else
+							{isRemoved = false;}
+							
+						return isRemoved;
+		},
+		'findUser' : function(criteria){
+					/* Criteria devra être de la forme : { name : 'Arbai' } */
+					/* check criteria*/
+					
+					var userId = Meteor.users.find(criteria);
+					return userId;
+		},
+		'activateUser' : function(key){
+						var isUpdated; 
+						var userId = Meteor.userId();
+						
+						if(MEteor.users.update(userId,{$set : key}))
+							{isUpdated = true;}
+						else
+							{isUpdated = false;}
+						
+						return isUpdated;
+		}
+});

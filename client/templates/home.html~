@@ -1,0 +1,24 @@
+<template name="home">
+
+	{{>navbar}}
+	
+	<div class="jumbotron" style="height:350px;">
+		<center>
+			<h1>Bienvenue sur Teachers</h1>
+			<h4>Trouver un professeur particulier en toute facilité</h4>
+		</center>
+	</div>
+	<div class="container-fluid">
+		<h3>Aller au formulaire</h3>
+		<button class="go-form btn btn-success">Go form !</button>
+	</div>
+	{{#if currentUser}}
+	<div class="container-fluid">
+		<ul class="list list-unstyled">
+			{{#each teachers}}
+				{{> displayTeacher}}
+			{{/each}}
+		</ul>
+	</div>
+	{{/if}}
+</template>

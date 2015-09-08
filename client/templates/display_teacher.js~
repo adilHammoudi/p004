@@ -1,0 +1,10 @@
+Template.displayTeacher.helpers({
+		email : function(){
+		
+		}
+});
+
+Template.displayTeacher.onCreated(function(){
+	Meteor.subscribe('allTeachers');
+
+});

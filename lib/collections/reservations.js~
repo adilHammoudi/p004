@@ -1,0 +1,59 @@
+Reservations = new Mongo.Collection('reservations');
+
+Meteor.methods({
+		'createReservation' : function(data){
+						/*check data*/
+						
+						var newReservationId = Reservations.insert(data);
+						return newReservationId;
+		},
+		'updateReservation' : function(reservationId,data){
+						/*check data*/		
+						/*only admin*/
+						
+						var isUpdated; 
+						if(Reservations.update(reservationId,{$set : data}))
+							{isUpdated = true;}
+						else
+							{isUpdated = false;}
+						
+						return isUpdated;
+		},
+		'removeReservation' : function(reservationId){
+						
+						var isRemoved; 
+						if(Reservations.remove(reservationId))
+							{isRemoved = true;}
+						else
+							{isRemoved = false;}
+							
+						return isRemoved;
+		},
+		'findReservation' : function(criteria){
+					/* Criteria devra être de la forme : { name : 'Arbai' } */
+					/* check criteria*/
+					
+					var reservationId = Reservations.find(criteria);
+					return reservationId;
+		},
+
+		'activateReservation' : function(reservationId, key){
+						var isUpdated; 
+						if(Reservations.update(reservationId,{$set : key}))
+							{isUpdated = true;}
+						else
+							{isUpdated = false;}
+						
+						return isUpdated;
+		},
+		
+		'findReservations' : function(criteria){
+				
+				/*check data*/
+				/*return only activated reservations*/
+				
+				var reservationsId = Reservations.find(criteria);
+				
+				return reservationsId;
+		}
+});

@@ -1,0 +1,16 @@
+Router.configure({
+	layoutTemplate: 'layout'
+});
+
+Router.route('/',{
+		layoutTemplate: 'layout',
+		template : 'home'});
+
+Router.route('/become-teacher/step-1', {
+		layoutTemplate : 'layout',
+		template : 'formBecomeTeacher'});
+		
+Router.route('/become-teacher/step-2/',{
+		layoutTemplate : 'layout',
+		template : 'formBecomeTeacher2'
+});

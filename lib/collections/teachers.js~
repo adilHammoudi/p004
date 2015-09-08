@@ -1,0 +1,59 @@
+Teachers = new Mongo.Collection('teachers');
+
+Meteor.methods({
+
+		'createTeacher' : function(data){
+						/*check data*/
+						
+						var newTeacherId = Teachers.insert(data);
+						return newTeacherId;
+		},
+		'updateTeacher' : function(teacherId,data){
+						/*check data*/		
+						
+						var isUpdated; 
+						if(Teachers.update(teacherId,{$set : data}))
+							{isUpdated = true;}
+						else
+							{isUpdated = false;}
+						
+						return isUpdated;
+		},
+		'removeTeacher' : function(teacherId){
+						
+						var isRemoved; 
+						if(Teachers.remove(teacherId))
+							{isRemoved = true;}
+						else
+							{isRemoved = false;}
+							
+						return isRemoved;
+		},
+		'findTeacher' : function(criteria){
+					/* Criteria devra être de la forme : { name : 'Arbai' } */
+					/* check criteria*/
+					
+					var teacherId = Teachers.find(criteria);
+					return teacherId;
+		},
+
+		'activateTeacher' : function(teacherId, key){
+						var isUpdated; 
+						if(Teachers.update(teacherId,{$set : key}))
+							{isUpdated = true;}
+						else
+							{isUpdated = false;}
+						
+						return isUpdated;
+		},
+		
+		'findTeachers' : function(criteria){
+				
+				/*check data*/
+				/*return only activated Teachers*/
+				
+				var teachersId = Teachers.find(criteria);
+				
+				return teachersId;
+		}
+});

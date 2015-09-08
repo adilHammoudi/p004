@@ -1,0 +1,217 @@
+<template name="navbar">
+
+	<nav class="navbar navbar-default " role="navigation">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/">P004</a>
+	    </div>
+	    
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+	      <ul class="nav navbar-nav navbar-right">
+		
+		{{#unless currentUser}}		
+		{{> registrationModal }}
+
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Se connecter</b> <span class="caret"></span></a>
+				<ul id="login-dp" class="dropdown-menu" >
+					<li>
+						 <div class="row">
+								<div class="col-md-12">
+									Se connecter
+<!--									<div class="social-buttons">-->
+<!--										<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>-->
+
+<!--									</div>-->
+<!--		                        or-->
+									 <form class="login" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+											<div class="form-group">
+												 <label class="sr-only" for="email">Email</label>
+												 <input type="email" class="form-control" name="email" placeholder="Email" required>
+											</div>
+											<div class="form-group">
+												 <label class="sr-only" for="password">Mot de passe</label>
+												 <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
+		                                     <div class="help-block text-right"><a href="/login/mot-de-passe-oublie">Mot de passe oublié ?</a></div>
+											</div>
+											<div class="form-group">
+												 <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+											</div>
+											<!--<div class="checkbox">
+												 <label>
+												 <input type="checkbox"> keep me logged-in
+												 </label>
+											</div>-->
+									 </form>
+								</div>
+								<div class="bottom text-center">
+									Pas encore inscrit ? <a href="#login-modal"><b>Rejoignez-nous</b></a>
+								</div>
+						 </div>
+					</li>
+				</ul>
+		</li>
+		{{/unless}}
+
+		{{#if currentUser}}
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#myModal">Mon profil<span style="margin-left:5px;" class="glyphicon glyphicon-user"></span></a>
+			  <!-- Trigger the modal with a button -->
+<!--			  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+			  <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">Mon profil</h4>
+				</div>
+				<div class="modal-body">
+				  {{> profilePageModalBody}}
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			      </div>
+			      
+			    </div>
+			  </div>
+		</li>
+<!--		<li>-->
+<!--		  <ul class="dropdown-menu" role="menu">-->
+<!--		    {{> profilePageModal}}-->
+<!--		    <li><a href="/profil/seances">Vos séances</a></li>-->
+<!--		    <li><a href="/invite">Inviter des amis</a></li>-->
+<!--		    <li class="divider"></li>-->
+<!--		    <li><button class="btn-link deconnectButton">Déconnexion</button></li>-->
+<!--		  </ul>-->
+<!--		</li>		-->
+		{{/if}}
+
+
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide<span class="caret"></span></a>
+		  <ul class="dropdown-menu" role="menu">
+		    <li></li>
+		    <li><a href="/guide/start">Guide du débutant</a></li>
+		    <li><a href="/guide/faq">Foire aux questions</a></li>
+			{{#unless currentUser}}	
+			<li class="divider"></li>	    
+			<li><a href="#">S'inscrire</a></li>
+			{{/unless}}
+		  </ul>
+		</li>
+
+		<li>
+			<a href="/propose-lesson/step-1" style="
+			text-decoration: none;
+			color : white;"><button class="btn btn-warning" >Proposez vos séances</button></a>
+		</li>
+
+	      </ul>
+
+
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+</template>
+
+<template name="registrationModal">
+
+	<li>
+		<a href="#" data-toggle="modal" data-target="#login-modal">S'inscrire</a>
+<!--		<div class="modal fade" id="login-modal" role="dialog" aria-hidden="true">-->
+<!--			<div class="modal-dialog">-->
+<!--			  <div class="modal-header">-->
+<!--					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+<!--					<h4 class="modal-title">Inscrivez-vous</h4>-->
+<!--				  </div>-->
+<!--				<div class="modal-body">-->
+<!--					<h3>Inscrivez-vous</h3>-->
+			<div class="modal" id="login-modal">
+			  <div class="modal-dialog">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title">Inscrivez-vous</h4>
+				  </div>
+				  <form class="form-registration form-group">
+				  <div class="modal-body">
+						<label class="sr-only" for="fname">Prénom</label>
+						<input type="text" class="form-control" name="fname" placeholder="Prénom">
+
+						<label class="sr-only" for="lname">Nom</label>
+						<input type="text" class="form-control" name="lname" placeholder="Nom">
+
+						<label class="sr-only" for="city">Ville</label>
+						<input type="text" class="form-control" name="city" placeholder="Ville">
+
+						<label class="sr-only" for="email">Adresse e-mail</label>
+						<input type="text" class="form-control" name="email" placeholder="Adresse-email">
+
+						<label class="sr-only" for="username">Nom d'utilisateur</label>
+						<input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
+
+						<label class="sr-only" for="password">Mot de passe</label>
+						<input type="password" class="form-control" name="password" placeholder="Mot de passe">
+
+						<label class="" for="birthday">Date de naissance</label>
+						<input type="date" class="form-control" name="birthday">
+				
+						<div class="checkbox form-control">
+							<input type="checkbox" name="receivingOffers">J'aimerai recevoir vos offres.
+						</div>
+
+						<p>En créant un compte, vous acceptez les Conditions générales, la Politique de confidentialité, la Politique de 							   remboursement et les Conditions de Garantie.</p>
+						<button type="submit" class="btn btn-danger">Envoyer</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+<!--					<div class="divider"></div>-->
+<!--					<center>Déjà membre ? <a href="#">Connexion</a></center>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+	</li>
+
+</template>
+
+<template name="profilePageModalBody">
+	<center>
+	 <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" border="0" class="img-circle">
+      <h3 class="media-heading">{{lname}} {{fname}}</h3>
+      	</center>
+      	
+      	<div class="row">
+  			<div class="col-md-6 col-md-offset-3">
+      			<table class="table table-bordered">
+				<tbody>      				
+				<tr>
+      					<td>E-mail :</td>
+      					<td>{{email}}</td>
+      				</tr>
+      				<tr>
+      					<td>Mot de passe :</td>
+      					<td><button class="btn btn-danger" type="submit">Modifier</button></td>
+      				</tr>
+      				<tr>
+      					{{shortBio}}
+      				</tr>
+      				</tbody>
+      			</table>
+      			<center><button class="logout btn btn-warning">Déconnexion</button></center>
+      		</div>
+      	</div>
+</template>

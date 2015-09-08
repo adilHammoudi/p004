@@ -1,0 +1,26 @@
+<template name="searchBar">
+
+	
+	<form class="form-group form-inline">
+		<div class="row">
+							
+					<select class="form-control" name="category" placeholder="Categorie">
+					  <option value="martial">Arts martiaux</option>
+					  <option value="combat">Sports de combat</option>
+					  <option value="danse">Danses</option>
+					  <option value="detente">Détente</option>
+					  <option value="insolite">Insolite</option>
+					  <option value="equipe">Sports d'équipes</option>
+					  <option value="other">Autre</option>
+					</select>
+			
+			
+					<input type="text" name="location" placeholder="Code postal" class="form-control">
+				
+				
+					<button type="submit" class="btn btn-danger">Chercher</button>
+				
+		</div>
+	</form>
+
+</template>

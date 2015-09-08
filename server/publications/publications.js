@@ -1,0 +1,44 @@
+Meteor.publish('allLessons',function(){
+	return Lessons.find();
+});
+
+Meteor.publish('searchedLessons', function(lessonsId){
+	return Lessons.find(lessonsId);
+});
+
+Meteor.publish('searchLessons',function(criteria){
+	return Lessons.find(criteria);
+});
+
+Meteor.publish('thisLesson', function(lessonId){
+		return Lessons.find(lessonId);
+});
+
+Meteor.publish('allCoaches',function(){
+	return Coaches.find();
+});
+
+Meteor.publish('searchedCoaches',function(criteria){
+	/* Criteria devra être de la forme : { name : 'Arbai' } */
+	return Coaches.find(criteria);
+});
+
+Meteor.publish('thisCoach',function(coachId){
+	return Coaches.find(coachId);
+});
+
+Meteor.publish('allReservations', function(){
+	return Reservations.find();
+});
+
+Meteor.publish('myReservations',function(userId){
+	return Reservations.find({userId : userId});
+});
+
+Meteor.publish('myReservationsCoach', function(coachId){
+	return Reservations.find({coachId : coachId});
+});
+
+Meteor.publish('thisReservation',function(reservationId){
+		return Reservations.find(reservationId);
+});

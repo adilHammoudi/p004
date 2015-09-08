@@ -1,0 +1,4 @@
+Meteor.publish('allTeachers',function(){
+
+	return Teachers.find();
+});

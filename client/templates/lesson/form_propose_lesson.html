@@ -1,0 +1,127 @@
+<template name="formProposeLesson">
+	<center><h2>Bienvenue sur le formulaire</h2></center>
+
+	<div class="container">
+		<h4>Et donc, vous voulez proposer votre séance ?...Remplissez ce formulaire.</h4>
+
+		{{#unless currentUser}}
+			<form class="form-group register">
+				<h3>Devenez membre</h3>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="email">Email</label>
+					<input type="email" name="email" placeholder="Email" class="form-control" required>
+				</div>
+				<div class="col-md-3">
+					<label for="password">Mot de passe</label>
+					<input type="password" name="password" placeholder="Mot de passe" class="form-control" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3" style="margin-top : 20px;">
+					<button type="submit" class="btn btn-danger">Enregistrer</button>
+				</div>
+			</div>
+			</form>
+		{{/unless}}
+		
+		{{#if currentUser}}
+			<form class="form-group propose-lesson">
+				<h3>Etablissez votre profil</h3>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="lname">Nom</label>
+					<input type="text" name="lname" placeholder="Nom" class="form-control" required>
+				</div>
+				<div class="col-md-3">
+					<label for="fname">Prénom</label>
+					<input type="text" name="fname" placeholder="Prénom" class="form-control" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="birthday">Date de naissance</label>
+					<input type="date" name="birthday" class="form-control" required>
+				</div>
+				<div class="col-md-3">
+					<label for="phone">Numéro de téléphone</label>
+					<input type="phone" name="phone" placeholder="Numéro de téléphone" class="form-control" required>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-3" style="margin-top : 20px;">
+					<button type="submit" class="btn btn-danger">Etape suivante</button>
+				</div>
+			</div>
+			</form>
+			{{/if}}
+		
+		<button class="btn btn-success back-home">Retour à l'accueil</button>
+	</div>
+</template>
+
+<template name="formProposeLesson2">
+	{{#if currentUser}}
+	<div class="container">
+		<form class="form-group propose-lesson-2">
+				<h3>Informations sur la séance</h3>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="title">Titre</label>
+					<input type="text" name="title" placeholder="Titre" class="form-control" required>
+				</div>
+				<div class="col-md-3">
+					<label for="description">Description</label>
+					<textarea rows="4" cols="50" name="description" class="form-control" maxlength="200" required>Description max. 200 caractères
+					</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="category">Catégorie</label>
+					<select class="form-control" name="category" placeholder="Catégorie">
+					  <option value="martial">Arts martiaux</option>
+					  <option value="combat">Sports de combat</option>
+					  <option value="danse">Danses</option>
+					  <option value="detente">Détente</option>
+					  <option value="insolite">Insolite</option>
+					  <option value="equipe">Sports d'équipes</option>
+					  <option value="other">Autre</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<label for="nummax">Nombre d'inscrits maximum</label>
+					<input type="number" name="nummax" placeholder="15" class="form-control" min="1" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 col-md-offset-3">
+					<label for="price">Prix/personne</label>
+					<div class="input-group">
+						<input type="number" name="price" placeholder="6" class="form-control" min="5" max="99" required>
+						<div class="input-group-addon">€</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<label for="street">Rue</label>
+					<input type="text" name="street" placeholder="ex. : 18 rue Neuve" class="form-control" required>
+				</div>
+				<div class="col-md-3">
+					<label for="zip">Code postal</label>
+					<input type="number" name="zip" placeholder="1000" class="form-control" min="1000" max="9999" required>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-3" style="margin-top : 20px;">
+					<button type="submit" class="btn btn-danger">Enregistrer</button>
+				</div>
+			</div>
+			</form>
+		</div>
+	{{/if}}
+	<button class="btn btn-success back-home">Retour à l'accueil</button>
+</template>
