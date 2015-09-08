@@ -7,7 +7,15 @@ Template.navbar.events({
 	"submit .login" : function(event){
 			event.preventDefault();
 			
-			Meteor.loginWithPassword({email : event.target.email.value}, event.target.password.value);
+			var email = event.target.email.value;
+			var password = event.target.password.value;
+			
+			Meteor.loginWithPassword({email : email}, password);
+			
+			event.target.email.value = "";
+			event.target.password.value="";
+			
+			Router.go('/');
 			return false;
 	},
 	

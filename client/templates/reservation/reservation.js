@@ -24,5 +24,10 @@ Template.reservation.helpers({
 });
 
 Template.reservation.events({
-	
+	"click .back-home" : function(event){
+			event.preventDefault();
+			
+			Router.go('/');
+			return false;
+	}
 });

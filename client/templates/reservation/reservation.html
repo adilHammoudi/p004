@@ -5,7 +5,102 @@
 		<h2>Reservation</h2>
 	</center>
 	
-	<h4> Reserved</h4>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row">
+					<h3>Paiement</h3>
+					
+					<form class="form-group col-md-8 payment">
+					
+						<div class="row">
+							<label for="country">Pays</label><br/>
+							<input type="text" class="form-control" name="country" placeholder="Pays">
+						</div >
+						
+						<div class="row">
+							<label for="payment-type">Type de paiement</label><br/>
+							<input type="text" class="form-control" name="payment-type" placeholder="Type de paiement">
+						</div>
+						
+						<div class="row">
+							<label for="card-number">Numéro de carte</label><br/>
+							<input type="text" class="form-control" name="card-number" placeholder="Numéro de carte">
+						</div>
+						
+						<div class="row">
+							<label for="expiration-date">Date d'expiration</label><br/>
+							<input type="date" class="form-control" name="expiration-date">
+						</div>
+						<div class="row">
+							<label for="security-code">Code de sécurité</label><br/>
+							<input type="text" class="form-control" name="security-code" placeholder="Code de sécurité">
+						</div>
+						<div class="row">
+							<br/>
+							<input type="checkbox" class="memorize-card"> Merci d'enregistrer ma carte de crédit pour les prochaines transactions
+						</div>
+					</form>
+				</div>
+				<div class="row">
+					<h3>Adresse de facturation</h3>
+					
+					<form class="form-group col-md-8 facturation">
+						<div class="row">
+							<div class="col-md-6">
+								<label for="lname">Prénom</label><br/>
+								<input type="text" class="form-control" name="lname" placeholder="Prénom">
+							</div>
+							
+							<div class="col-md-6">
+								<label for="fname">Nom</label><br/>
+								<input type="text" class="form-control" name="fname" placeholder="Nom">
+							</div>
+						</div>
+					
+						<div class="row">
+							<div class="col-md-8">
+								<label for="street">Adresse postale</label><br/>
+								<input type="text" class="form-control" name="street" placeholder="Adresse postale">
+							</div>
+							
+							<div class="col-md-4">
+								<label for="nr-appt">N°</label><br/>
+								<input type="text" class="form-control" name="nr-appt" placeholder="Numéro">
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-4">
+								<label for="city">Ville</label><br/>
+								<input type="text" class="form-control" name="city" placeholder="Ville">
+							</div>
+							
+							<div class="col-md-4">
+								<label for="zip-code">Code postal</label><br/>
+								<input type="text" class="form-control" name="zip-code" placeholder="Code postal">
+							</div>
+							
+							<div class="col-md-4">
+								<label for="country-bis">Pays</label><br/>
+								<input type="text" class="form-control" name="country-bis" placeholder="Pays">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<h3>Recapitulatif de la séance</h3>
+			</div>
+		</div>
+		
+		<div class="row">
+			<center>
+				<button type="submit" class="btn btn-warning btn-lg">Réserver</button>
+			</center>
+		</div>
+	</div>
 	
-	<button class="btn btn-danger btn-lg">Retour</button>
+	<button class="btn btn-danger btn-lg back-home">Retour</button>
 </template>
