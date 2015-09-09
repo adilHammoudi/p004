@@ -1,26 +1,13 @@
 Template.reservation.onCreated(function(){
-	if(Meteor.user()){
-	
-//		var lessonId = this.params.lessonId;
-		var lessonId=Session.get("lessonId");
-		var userId = Meteor.userId();
-		var isPaid = false;
-		
-		var data = {
-				lessonId : lessonId,
-				userId : userId,
-				isPaid : isPaid
-		};
-		
-		Meteor.call("createReservation",data);
-	}
-	else{
-	
+	if(! Meteor.userId()){
+		this.render('/subscribe/login');
 	}
 });
 
 Template.reservation.helpers({
-		
+		'title':function(){
+			return this.title;
+		}
 });
 
 Template.reservation.events({
@@ -33,6 +20,7 @@ Template.reservation.events({
 	
 	"submit .payment" : function(event){
 		event.preventDefault();
+		var isPaid = false;
 		
 		window.alert("Paiement procédé !");
 		
@@ -53,9 +41,34 @@ Template.reservation.events({
 								  };
 								  
 		Meteor.call("updateUser", {facturation : facturationAdress});
+	
+//		var lessonId = this.params.lessonId;
+		var lessonId=Session.get("lessonId");
 		
+		var data = {
+				lessonId : lessonId,
+				userId : userId,
+				isPaid : isPaid,
+				facturation : facturationAdress,
+		};
+		
+		var reservationId=Meteor.call("createReservation",data);
+		
+		Session.set("reservationId", reservationId);
+
 		window.alert("Adresse de facturation ajoutée");
 		
+		Router.go('/subscribe/confirmation');
+		
 		return false;
+	}
+});
+
+Template.confirmation_reservation.events({
+	"click .back-home" : function(event){
+			event.preventDefault();
+			
+			Router.go('/');
+			return false;
 	}
 });

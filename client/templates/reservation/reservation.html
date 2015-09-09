@@ -92,12 +92,56 @@
 					</form>
 			</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 ">
 				<h3>Recapitulatif de la séance</h3>
+				
+				<div class="row">
+					Image
+				</div>
+				
+				<div class="row">
+					{{title}}
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						Prix :
+					</div>
+					<div class="col-md-6">
+						6 €
+					</div>
+				</div>
+				
+				<div class="row">
+					Lieu
+				</div>
+				
+				<div class="row">
+					Date et heure
+				</div>
 			</div>
 
 		</div>
 	</div>
 	
 	<button class="btn btn-danger btn-lg back-home">Retour</button>
+</template>
+
+<template name="confirmation_reservation">
+	{{>navbar}}
+	
+	<center>
+		<h2>Confirmation de votre reservation</h2>
+	</center>
+	
+	<button class="btn btn-danger btn-lg back-home">Retour</button>
+</template>
+
+<template name="login_reservation">
+	{{>navbar}}
+	
+	<div class="container-fluid">
+		<h3 style="background-color:rgba(0,0,0,0.3)"> Veuillez vous connecter avant de poursuivre</h3>
+	</div >
+	
 </template>
