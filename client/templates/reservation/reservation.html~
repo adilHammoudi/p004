@@ -75,7 +75,7 @@
 					
 								<div class="col-md-4">
 									<label for="zip-code">Code postal</label><br/>
-									<input type="text" class="form-control" name="zip_code" placeholder="Code postal">
+									<input type="text" class="form-control" name="zip-code" placeholder="Code postal">
 								</div>
 					
 								<div class="col-md-4">
